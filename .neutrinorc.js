@@ -1,14 +1,18 @@
+const airbnb = require('@neutrinojs/airbnb');
+const react = require('@neutrinojs/react');
+const jest = require('@neutrinojs/jest');
+
 module.exports = {
+  options: {
+    root: __dirname,
+  },
   use: [
-    '@neutrinojs/airbnb',
-    [
-      '@neutrinojs/react',
-      {
-        html: {
-          title: 'super-react'
-        }
+    airbnb(),
+    react({
+      html: {
+        title: 'super-react'
       }
-    ],
-    '@neutrinojs/jest'
-  ]
+    }),
+    jest(),
+  ],
 };
