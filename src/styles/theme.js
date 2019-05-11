@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
-import { pink, red } from '@material-ui/core/colors'
+import { pink, blue } from '@material-ui/core/colors'
 
 const fontFamily = "'Karla', sans-serif"
 
@@ -20,7 +20,7 @@ export const spacing = {
 }
 
 export const palette = {
-  primary: red,
+  primary: blue,
   secondary: pink,
 }
 
