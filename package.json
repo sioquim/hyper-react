@@ -8,18 +8,32 @@
     "build": "webpack --mode production",
     "test": "jest",
     "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test",
-    "lint:fix": "eslint . --fix --ext jsx,js"
+    "lint:fix": "eslint ./src --fix --ext jsx,js"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",
-    "react-hot-loader": "^4"
+    "react-hot-loader": "^4",
+    "styled-components": "^4.2.0",
+    "styled-normalize": "^8.0.6"
   },
   "devDependencies": {
     "@neutrinojs/airbnb": "^9.0.0-rc.3",
+    "@neutrinojs/copy": "^9.0.0-rc.3",
+    "@neutrinojs/html-template": "^9.0.0-rc.3",
     "@neutrinojs/jest": "^9.0.0-rc.3",
     "@neutrinojs/react": "^9.0.0-rc.3",
+    "eslint": "5.0.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-superreact": "1.0.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "eslint-plugin-standard": "^4.0.0",
     "husky": "^2.2.0",
     "jest": "^24",
     "lint-staged": "^8.1.6",
@@ -37,7 +51,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx}": [
       "eslint",
-      "eslint . --fix --ext jsx,js",
+      "eslint ./src --fix --ext jsx,js",
       "git add"
     ]
   }

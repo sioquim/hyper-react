@@ -1,6 +1,5 @@
-import './reset.css'
 import React from 'react'
 import { render } from 'react-dom'
-import App from './containers/App'
+import RootLayout from './RootLayout'
 
-render(<App />, document.getElementById('root'))
+render(<RootLayout />, document.getElementById('root'))
