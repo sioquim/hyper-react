@@ -56,7 +56,7 @@ module.exports = {
 		copy({
 			patterns: [
 				{
-					context: 'src/public',
+					context: 'public',
 					from: '**/*',
 					to: ''
 				}
