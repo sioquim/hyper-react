@@ -14,7 +14,7 @@
     "@material-ui/core": "^3.9.3",
     "axios": "^0.18.0",
     "idx": "^2.5.6",
-    "normalizr": "^3.3.0",
+    "lodash.memoize": "^4.1.2",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",

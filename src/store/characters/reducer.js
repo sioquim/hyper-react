@@ -1,34 +1,33 @@
-import {
-  API_GET_CHARACTERS_CANCEL,
-  API_GET_CHARACTERS_REQUEST,
-  API_GET_CHARACTERS_SUCCESS,
-} from './actions'
+import { createSelector } from 'reselect'
+import memoize from 'lodash.memoize'
+import { API_GET_CHARACTERS_SUCCESS } from './actions'
 
-export default function mockReducer(state = {}, action) {
+export const getCharactersByIds = createSelector(
+  (state) => state.characters,
+  (characters) =>
+    memoize((characterIds) =>
+      characters
+        ? Object.values(characters)
+            .filter(
+              (character) => characterIds.indexOf(character.character_id) > -1
+            )
+            .sort((a, b) => {
+              if (a.name < b.name) {
+                return -1
+              }
+              if (a.name > b.name) {
+                return 1
+              }
+              return 0
+            })
+        : []
+    )
+)
+
+export default function charactersReducer(state = {}, action) {
   switch (action.type) {
-    case API_GET_CHARACTERS_REQUEST: {
-      return {
-        ...state,
-        [action.delay]: true,
-      }
-    }
     case API_GET_CHARACTERS_SUCCESS: {
-      return {
-        ...state,
-        [action.delay]: false,
-      }
-    }
-    case API_GET_CHARACTERS_CANCEL: {
-      return Object.keys(state)
-        .filter((callDelayKey) => {
-          return state[callDelayKey] === false
-        })
-        .reduce((obj, key) => {
-          return {
-            ...obj,
-            [key]: state[key],
-          }
-        }, {})
+      return { ...state, ...action.data }
     }
     default:
       return state
