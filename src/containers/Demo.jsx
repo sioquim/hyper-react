@@ -5,21 +5,30 @@ import { bindActionCreators } from 'redux'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Grid from '@material-ui/core/Grid'
 import CharacterList from './CharacterList'
 import Selector from '../components/Selector'
 import { getCharacters } from '../store/characters/actions'
 import { getMovies } from '../store/movies/actions'
+import { getProgress } from '../store/progress/reducer'
 
 export const Container = styled.div`
   text-align: center;
+  flex-grow: 1;
 `
 const Title = styled(Typography)`
   && {
     margin-bottom: ${({ theme }) => `${theme.spacing.lg}px`};
   }
 `
+const Progress = styled(CircularProgress)`
+  && {
+    margin-left: ${({ theme }) => `${theme.spacing.sm}px`};
+  }
+`
 
-const Demo = ({ actions, movies }) => {
+const Demo = ({ actions, movies, isLoading }) => {
   const { apiGetMovies, apiGetCharacters } = actions
   const [selectedMovieId, setSelectedMovie] = useState('')
 
@@ -58,19 +67,23 @@ const Demo = ({ actions, movies }) => {
     () => (movies[selectedMovieId] && movies[selectedMovieId].characters) || [],
     [movies, selectedMovieId]
   )
-
   return (
     <Container>
       <Title variant="h1" align="center">
-        Welcome to Super React
+        Super React
       </Title>
-      <Selector
-        onChange={changeMovie}
-        value={selectedMovieId}
-        list={movieList}
-        label="Starwars Movie"
-        labelWidth={114}
-      />
+      <Grid container wrap="nowrap" spacing={0}>
+        <Grid item xs={12}>
+          <Selector
+            onChange={changeMovie}
+            value={selectedMovieId}
+            list={movieList}
+            label="Starwars Movie"
+            labelWidth={114}
+          />
+        </Grid>
+        <Grid item>{isLoading && <Progress color="secondary" />}</Grid>
+      </Grid>
       <CharacterList characterIds={characterIds} />
     </Container>
   )
@@ -79,6 +92,7 @@ const Demo = ({ actions, movies }) => {
 Demo.propTypes = {
   actions: PropTypes.object.isRequired,
   movies: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 }
 
 export default compose(
@@ -86,6 +100,9 @@ export default compose(
     (state) => {
       return {
         movies: state.movies || {},
+        isLoading:
+          getProgress(state, 'API_GET_MOVIES') ||
+          getProgress(state, 'API_GET_CHARACTERS'),
       }
     },
     (dispatch) => {

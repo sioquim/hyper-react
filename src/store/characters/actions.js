@@ -45,17 +45,19 @@ export const charactersEpic = (action$, store) =>
           )
         )
 
-      return forkJoin(parallelObservables).pipe(
-        switchMap((response) => {
-          const normalizedResponse = response.reduce(
-            (acc, curr) => ({
-              ...acc,
-              [curr.character_id]: curr,
-            }),
-            {}
+      return parallelObservables.length
+        ? forkJoin(parallelObservables).pipe(
+            switchMap((response) => {
+              const normalizedResponse = response.reduce(
+                (acc, curr) => ({
+                  ...acc,
+                  [curr.character_id]: curr,
+                }),
+                {}
+              )
+              return of(completeGetCharacterCall(normalizedResponse))
+            })
           )
-          return of(completeGetCharacterCall(normalizedResponse))
-        })
-      )
+        : of(completeGetCharacterCall([]))
     })
   )
