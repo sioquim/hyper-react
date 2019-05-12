@@ -3137,6 +3137,11 @@ eslint-config-airbnb@^17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
+eslint-config-hyper-react@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-hyper-react/-/eslint-config-hyper-react-1.0.2.tgz#15c2ac7ec80f877cf7f60680be0300d26177e6b3"
+  integrity sha512-3KaiXcsSSwFtKAq1lHO66jDpALCtfWRsK89rXyxXF1zUeizoJK+3AKCbcnCJbp62f019yd9ZpuxUbfApv8zqYA==
+
 eslint-config-prettier@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-4.2.0.tgz#70b946b629cd0e3e98233fd9ecde4cb9778de96c"
@@ -3148,11 +3153,6 @@ eslint-config-standard@^12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-12.0.0.tgz#638b4c65db0bd5a41319f96bba1f15ddad2107d9"
   integrity sha512-COUz8FnXhqFitYj4DTqHzidjIL/t4mumGZto5c7DrBpvWoie+Sn3P4sLEzUGeYhRElWuFEf8K1S1EfvD1vixCQ==
-
-eslint-config-superreact@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-superreact/-/eslint-config-superreact-1.0.2.tgz#f7215c3e8cdf93485bd3f893c668f17ac179bff9"
-  integrity sha512-ttDCbg5rJegm3PiCOn7weSKC6+fjTOwR/P5E/tPB/YckOjli7Jk/QkQDo9xsXuAx7P81UJh7DzdqYcWG6xgLyQ==
 
 eslint-import-resolver-node@^0.3.2:
   version "0.3.2"

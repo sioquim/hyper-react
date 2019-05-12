@@ -16,7 +16,7 @@ module.exports = {
 		airbnb({
 			eslint: {
 				baseConfig: {
-					extends: [ 'eslint-config-superreact' ],
+					extends: [ 'eslint-config-hyper-react' ],
 					parserOptions: {
 						ecmaFeatures: {
 							jsx: true
@@ -49,7 +49,7 @@ module.exports = {
 			},
 			// Override pluginId to add an additional html-template plugin instance
 			pluginId: 'html',
-			title: 'Super React'
+			title: 'Hyper React'
 		}),
 		copy({
 			patterns: [

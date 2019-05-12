@@ -1,2 +1,2 @@
-# super-react
+# hyper-react
 ReactJS, Redux, Neutrino

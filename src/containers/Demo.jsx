@@ -70,7 +70,7 @@ const Demo = ({ actions, movies, isLoading }) => {
   return (
     <Container>
       <Title variant="h1" align="center">
-        Super React
+        Hyper React
       </Title>
       <Grid container wrap="nowrap" spacing={0}>
         <Grid item xs={12}>
