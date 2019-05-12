@@ -85,3 +85,6 @@ typings/
 
 # Neutrino build directory
 build
+
+# IDEs
+.vscode
