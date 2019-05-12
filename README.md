@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/francosioquim/hyper-react/master/public/android-chrome-192x192.png)
+![](https://francosioquim.github.io/hyper-react/android-chrome-192x192.png)
 # hyper-react
 
 See [Demo](https://francosioquim.github.io/hyper-react/)
