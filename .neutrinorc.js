@@ -12,6 +12,7 @@ module.exports = {
 	use: [
 		(neutrino) => {
 			neutrino.config.resolve.alias.set('react-dom', '@hot-loader/react-dom');
+			neutrino.config.output.publicPath('/hyper-react');
 		},
 		airbnb({
 			eslint: {
@@ -37,7 +38,8 @@ module.exports = {
 			// Target specific browsers with babel-preset-env
 			targets: {
 				browsers: [ 'last 1 Chrome versions', 'last 1 Firefox versions' ]
-			}
+			},
+			publicPath: process.env.NODE_ENV === 'production' ? '/hyper-react' : '/'
 		}),
 		jest(),
 		template({
@@ -60,7 +62,8 @@ module.exports = {
 				}
 			],
 			options: {
-				logLevel: 'debug'
+				logLevel: 'debug',
+				ignore: [ '*.ejs' ]
 			},
 			pluginId: 'copy'
 		})

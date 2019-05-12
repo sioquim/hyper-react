@@ -78,32 +78,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-box-shadow: 0 0 0px 1000px white inset;
     transition: background-color 5000s ease-in-out 0s;
   }
-
-  @font-face {
-    font-family: 'ProximaNova';
-    font-weight: 300;
-    src: url('../assets/fonts/ProximaNova/ProximaNova-Light.otf') format('opentype');
-  }
-
-  @font-face {
-    font-family: 'ProximaNova';
-    font-weight: 400;
-    src: url('../assets/fonts/ProximaNova/ProximaNova-Regular.otf') format('opentype');
-  }
-
-  @font-face {
-    font-family: 'ProximaNova';
-    font-weight: 500;
-    src: url('../assets/fonts/ProximaNova/ProximaNova-Semibold.otf') format('opentype');
-  }
-
-  @font-face {
-    font-family: 'ProximaNova';
-    font-weight: 700;
-    src: url('../assets/fonts/ProximaNova/ProximaNova-Bold.otf') format('opentype');
-  }
-
-
   /* Add @font-face here */
   
  `
