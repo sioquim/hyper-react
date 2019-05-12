@@ -43,7 +43,7 @@ module.exports = {
 		}),
 		jest(),
 		template({
-			template: require.resolve('./src/public/index.ejs'),
+			template: require.resolve('./public/index.ejs'),
 			appMountId: 'root',
 			lang: 'en',
 			meta: {

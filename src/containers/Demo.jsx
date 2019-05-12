@@ -17,6 +17,9 @@ export const Container = styled.div`
   text-align: center;
   flex-grow: 1;
 `
+export const ListWrapper = styled.div`
+  margin: 0 auto;
+`
 const Title = styled(Typography)`
   && {
     margin-bottom: ${({ theme }) => `${theme.spacing.lg}px`};
@@ -84,7 +87,9 @@ const Demo = ({ actions, movies, isLoading }) => {
         </Grid>
         <Grid item>{isLoading && <Progress color="secondary" />}</Grid>
       </Grid>
-      <CharacterList characterIds={characterIds} />
+      <ListWrapper>
+        <CharacterList characterIds={characterIds} />
+      </ListWrapper>
     </Container>
   )
 }
