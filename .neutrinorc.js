@@ -38,9 +38,7 @@ module.exports = {
 			targets: {
 				browsers: [ 'last 1 Chrome versions', 'last 1 Firefox versions' ]
 			},
-			publicPath: () => {
-				return process.env.NODE_ENV === 'production' ? '/hyper-react' : '/';
-			}
+			publicPath: '/'
 		}),
 		jest(),
 		template({

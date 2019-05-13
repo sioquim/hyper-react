@@ -17,11 +17,11 @@ import {
 import { getMovies, API_GET_MOVIES } from '../store/movies/actions'
 import { getProgress } from '../store/progress/reducer'
 
-export const Container = styled.div`
+const Container = styled.div`
   text-align: center;
   flex-grow: 1;
 `
-export const ListWrapper = styled.div`
+const ListWrapper = styled.div`
   display: flex;
   justify-content: center;
 `
