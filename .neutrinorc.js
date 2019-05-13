@@ -3,7 +3,6 @@ const react = require('@neutrinojs/react');
 const jest = require('@neutrinojs/jest');
 const template = require('@neutrinojs/html-template');
 const copy = require('@neutrinojs/copy');
-const { basename, join } = require('path');
 
 module.exports = {
 	options: {
@@ -39,7 +38,9 @@ module.exports = {
 			targets: {
 				browsers: [ 'last 1 Chrome versions', 'last 1 Firefox versions' ]
 			},
-			publicPath: process.env.NODE_ENV === 'production' ? '/hyper-react' : '/'
+			publicPath: () => {
+				return process.env.NODE_ENV === 'production' ? '/hyper-react' : '/';
+			}
 		}),
 		jest(),
 		template({
