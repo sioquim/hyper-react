@@ -9,10 +9,6 @@ module.exports = {
 		root: __dirname
 	},
 	use: [
-		(neutrino) => {
-			neutrino.config.resolve.alias.set('react-dom', '@hot-loader/react-dom');
-			neutrino.config.output.publicPath('/hyper-react');
-		},
 		airbnb({
 			eslint: {
 				baseConfig: {
@@ -38,7 +34,7 @@ module.exports = {
 			targets: {
 				browsers: [ 'last 1 Chrome versions', 'last 1 Firefox versions' ]
 			},
-			publicPath: '/'
+			publicPath: ''
 		}),
 		jest(),
 		template({
@@ -65,6 +61,9 @@ module.exports = {
 				ignore: [ '*.ejs' ]
 			},
 			pluginId: 'copy'
-		})
+		}),
+		(neutrino) => {
+			neutrino.config.resolve.alias.set('react-dom', '@hot-loader/react-dom');
+		}
 	]
 };
