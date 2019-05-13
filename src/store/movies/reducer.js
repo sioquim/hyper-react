@@ -1,6 +1,6 @@
 import { API_GET_MOVIES_SUCCESS } from './actions'
 
-export default function mockReducer(state = {}, action) {
+export default function moviesReducer(state = {}, action) {
   switch (action.type) {
     case API_GET_MOVIES_SUCCESS: {
       return {

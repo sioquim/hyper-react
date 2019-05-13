@@ -39,6 +39,7 @@ const Progress = styled(CircularProgress)`
 const Demo = ({ actions, movies, isLoadingMovies, isLoadingCharacters }) => {
   const { apiGetMovies, apiGetCharacters, apiCancelGetCharacters } = actions
   const [selectedMovieId, setSelectedMovie] = useState('')
+
   useEffect(() => {
     const fetchMovies = async () => {
       await apiGetMovies()
@@ -50,7 +51,7 @@ const Demo = ({ actions, movies, isLoadingMovies, isLoadingCharacters }) => {
     () => {
       const fetchCharacters = async () => {
         if (movies[selectedMovieId]) {
-          // cancel any running async calls
+          // Cancel any running async calls
           if (isLoadingCharacters) {
             apiCancelGetCharacters()
           }
@@ -82,6 +83,7 @@ const Demo = ({ actions, movies, isLoadingMovies, isLoadingCharacters }) => {
     () => (movies[selectedMovieId] && movies[selectedMovieId].characters) || [],
     [movies, selectedMovieId]
   )
+
   return (
     <Container>
       <Title variant="h1" align="center">
