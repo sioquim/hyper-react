@@ -9,8 +9,12 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
 import CharacterList from './CharacterList'
 import Selector from '../components/Selector'
-import { getCharacters } from '../store/characters/actions'
-import { getMovies } from '../store/movies/actions'
+import {
+  getCharacters,
+  cancelGetCharacters,
+  API_GET_CHARACTERS,
+} from '../store/characters/actions'
+import { getMovies, API_GET_MOVIES } from '../store/movies/actions'
 import { getProgress } from '../store/progress/reducer'
 
 export const Container = styled.div`
@@ -18,7 +22,8 @@ export const Container = styled.div`
   flex-grow: 1;
 `
 export const ListWrapper = styled.div`
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 `
 const Title = styled(Typography)`
   && {
@@ -31,10 +36,9 @@ const Progress = styled(CircularProgress)`
   }
 `
 
-const Demo = ({ actions, movies, isLoading }) => {
-  const { apiGetMovies, apiGetCharacters } = actions
+const Demo = ({ actions, movies, isLoadingMovies, isLoadingCharacters }) => {
+  const { apiGetMovies, apiGetCharacters, apiCancelGetCharacters } = actions
   const [selectedMovieId, setSelectedMovie] = useState('')
-
   useEffect(() => {
     const fetchMovies = async () => {
       await apiGetMovies()
@@ -42,14 +46,22 @@ const Demo = ({ actions, movies, isLoading }) => {
     fetchMovies()
   }, [apiGetMovies])
 
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      if (movies[selectedMovieId]) {
-        apiGetCharacters(movies[selectedMovieId].characters)
+  useEffect(
+    () => {
+      const fetchCharacters = async () => {
+        if (movies[selectedMovieId]) {
+          // cancel any running async calls
+          if (isLoadingCharacters) {
+            apiCancelGetCharacters()
+          }
+          apiGetCharacters(movies[selectedMovieId].characters)
+        }
       }
-    }
-    fetchCharacters()
-  }, [apiGetCharacters, movies, selectedMovieId])
+      fetchCharacters()
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [movies, selectedMovieId]
+  )
 
   const changeMovie = useCallback((event) => {
     setSelectedMovie(event.target.value)
@@ -85,7 +97,11 @@ const Demo = ({ actions, movies, isLoading }) => {
             labelWidth={114}
           />
         </Grid>
-        <Grid item>{isLoading && <Progress color="secondary" />}</Grid>
+        <Grid item>
+          {(isLoadingMovies || isLoadingCharacters) && (
+            <Progress color="secondary" />
+          )}
+        </Grid>
       </Grid>
       <ListWrapper>
         <CharacterList characterIds={characterIds} />
@@ -97,7 +113,8 @@ const Demo = ({ actions, movies, isLoading }) => {
 Demo.propTypes = {
   actions: PropTypes.object.isRequired,
   movies: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  isLoadingMovies: PropTypes.bool.isRequired,
+  isLoadingCharacters: PropTypes.bool.isRequired,
 }
 
 export default compose(
@@ -105,15 +122,15 @@ export default compose(
     (state) => {
       return {
         movies: state.movies || {},
-        isLoading:
-          getProgress(state, 'API_GET_MOVIES') ||
-          getProgress(state, 'API_GET_CHARACTERS'),
+        isLoadingMovies: getProgress(state, API_GET_MOVIES),
+        isLoadingCharacters: getProgress(state, API_GET_CHARACTERS),
       }
     },
     (dispatch) => {
       const actions = {
         apiGetCharacters: getCharacters,
         apiGetMovies: getMovies,
+        apiCancelGetCharacters: cancelGetCharacters,
       }
       return {
         actions: bindActionCreators(actions, dispatch),
