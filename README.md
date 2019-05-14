@@ -1,6 +1,8 @@
 ![](https://francosioquim.github.io/hyper-react/android-chrome-192x192.png)
 # hyper-react
 
+A simple starter project that uses React Hooks and Redux observables.
+
 See [Demo](https://francosioquim.github.io/hyper-react/)
 
 # Features
