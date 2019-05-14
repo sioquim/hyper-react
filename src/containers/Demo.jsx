@@ -1,21 +1,30 @@
-import React, { useEffect, useCallback, useMemo, useState } from 'react'
-import Typography from '@material-ui/core/Typography'
+import React, {
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
+
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
 import { bindActionCreators } from 'redux'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import Grid from '@material-ui/core/Grid'
-import CharacterList from './CharacterList'
-import Selector from '../components/Selector'
-import {
-  getCharacters,
-  cancelGetCharacters,
-  API_GET_CHARACTERS,
-} from '../store/characters/actions'
-import { getMovies, API_GET_MOVIES } from '../store/movies/actions'
 import { getProgress } from '../store/progress/reducer'
+import Selector from '../components/Selector'
+import { API_GET_MOVIES, getMovies } from '../store/movies/actions'
+import {
+  API_GET_CHARACTERS,
+  cancelGetCharacters,
+  getCharacters,
+} from '../store/characters/actions'
+
+const CharacterList = lazy(() => import('./CharacterList'))
 
 const Container = styled.div`
   text-align: center;
@@ -106,7 +115,9 @@ const Demo = ({ actions, movies, isLoadingMovies, isLoadingCharacters }) => {
         </Grid>
       </Grid>
       <ListWrapper>
-        <CharacterList characterIds={characterIds} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <CharacterList characterIds={characterIds} />
+        </Suspense>
       </ListWrapper>
     </Container>
   )
