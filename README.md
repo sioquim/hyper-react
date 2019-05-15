@@ -1,9 +1,9 @@
 ![](https://francosioquim.github.io/hyper-react/android-chrome-192x192.png)
 # hyper-react
 
-A simple starter project that uses React Hooks and Redux observables.
+A simple example of the best possible solution written in React (and other libs)  to implement a select and fetch [demo](https://francosioquim.github.io/hyper-react/) using the [Starwars API](https://swapi.co/).
 
-See [Demo](https://francosioquim.github.io/hyper-react/)
+See [Example](https://francosioquim.github.io/hyper-react/)
 
 # Features
 
@@ -29,8 +29,10 @@ See [Demo](https://francosioquim.github.io/hyper-react/)
     ├── test                        # Unit tests
     └── ...
 
+# Contribution
+All PRs are welcome to improve the existing solution.
+
 # Roadmap
 1) Error Handling for Async Actions
-2) Install [Router5](https://router5.js.org/)
-3) Install PWA features using [Workbox](https://developers.google.com/web/tools/workbox/)
+2) Install PWA features using [Workbox](https://developers.google.com/web/tools/workbox/)
 
