@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.3",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "idx": "^2.5.6",
     "lodash.memoize": "^4.1.2",
     "prop-types": "^15",
