@@ -1,9 +1,9 @@
 ![](https://francosioquim.github.io/hyper-react/android-chrome-192x192.png)
 # hyper-react
 
-A simple example of the best possible solution written in React (and other libs)  to implement a select and fetch [demo](https://francosioquim.github.io/hyper-react/) using the [Starwars API](https://swapi.co/).
+A simple React example of autocomplete with data fetching [demo](https://sioquim.github.io/hyper-react/) using the [Starwars API](https://swapi.co/).
 
-See [Example](https://francosioquim.github.io/hyper-react/)
+See [Example](https://sioquim.github.io/hyper-react/)
 
 # Features
 
